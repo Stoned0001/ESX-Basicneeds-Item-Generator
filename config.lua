@@ -4,10 +4,6 @@ Configusableitems.items = {
 
     --Alcohol
     
-    cheesecake = {Art= {"thirst","hunger"},menge = 2000000, notification= 'Du hast ein leckeres Stück Käsemandarinenkuchen gegessen'};
-
-    schokolade = {Art= {"thirst","hunger"},menge = 1000000, notification= 'Du hast ein leckeres Stück Schokolade gegessen', prop_name = "prop_choc_meto"};
-    
     beer = {Art= {"drunk"},menge = 100000, notification= 'Du hast dir ein frisch gezapftes Bier gegönnt', prop_name = "lrz_tennets"};
     
     alge = {Art= {"drunk"},menge = 150000, notification= 'Du hast dir ne Flasche Alge reingeorgelt', prop_name = "apa_prop_cs_plastic_cup_01"};
