@@ -53,3 +53,34 @@ AddEventHandler('esx_basicneeds:onDrink', function(prop_name)
 
 	end
 end)
+
+-- if you use esx_optionalneeds!!!!
+
+
+RegisterNetEvent('esx_optionalneeds:onDrink')
+AddEventHandler('esx_optionalneeds:onDrink', function(prop_name)
+    if not IsAnimated then
+      prop_name = prop_name or 'prop_ld_flow_bottle'
+      IsAnimated = true
+
+      CreateThread(function()
+        local playerPed = PlayerPedId()
+        local x,y,z = table.unpack(playerCoords)
+        local prop = CreateObject(joaat(prop_name), x, y, z + 0.2, true, true, true)
+        local boneIndex = GetPedBoneIndex(playerPed, 18905)
+        AttachEntityToEntity(prop, playerPed, boneIndex, 0.12, -0.038, 0.01, 90.0, 90.0, 170.0, true, true, false, true, 1, true)
+
+        ESX.Streaming.RequestAnimDict('mp_player_intdrink', function()
+          TaskPlayAnim(playerPed, 'mp_player_intdrink', 'loop_bottle', 1.0, -1.0, 3000, 0, 1, true, true, true)
+          RemoveAnimDict('mp_player_intdrink')
+
+          Wait(3000)
+          IsAnimated = false
+          ClearPedSecondaryTask(playerPed)
+          DeleteObject(prop)
+        end)
+      end)
+
+    end
+end)
+
